@@ -1,4 +1,4 @@
 # WeatherApp
 A weather app
 
-https://alexscholler.github.io/weatherapp/
+https://alexscholler.github.io/WeatherApp/
