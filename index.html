@@ -5,24 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Weather App</title>
   <link rel="stylesheet" href="style.css">
-  <!-- Chart.js -->
+
+  <!-- Chart.js for graphs -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
 <div class="container">
   <h1>Weather App</h1>
-  <input type="text" id="cityInput" placeholder="Enter city name">
-  <button onclick="getWeather()">Get Weather</button>
+  <div class="search">
+    <input type="text" id="cityInput" placeholder="Enter city">
+    <button id="getWeatherBtn">Get Weather</button>
+  </div>
 
-  <h2 id="cityName"></h2>
-  <p id="temp"></p>
-  <p id="description"></p>
+  <div id="currentWeather"></div>
 
-  <h3>Hourly Forecast</h3>
-  <div id="hourlyForecast" class="forecast-container"></div>
+  <h2>Hourly Forecast (Next 24 Hours)</h2>
+  <div id="hourlyForecast" class="forecast-grid"></div>
 
-  <h3>Daily Forecast</h3>
-  <div id="dailyForecast" class="forecast-container"></div>
+  <h2>7-Day Forecast</h2>
+  <div id="dailyForecast" class="forecast-grid"></div>
 
   <h3>Cloud Coverage Next 24 Hours</h3>
   <canvas id="cloudChart" height="150"></canvas>
@@ -31,7 +32,9 @@
   <canvas id="rainChart" height="150"></canvas>
 </div>
 
+<!-- Load API key first -->
+<script src="config.js"></script>
+<!-- App logic -->
 <script src="script.js"></script>
 </body>
 </html>
-

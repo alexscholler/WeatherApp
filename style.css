@@ -1,61 +1,50 @@
 body {
-  font-family: Arial, sans-serif;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-  transition: background 1s ease;
-  color: #fff;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    background: linear-gradient(to bottom, #87CEEB, #f0f8ff);
+    color: #333;
 }
 
 .container {
-  max-width: 600px;
-  margin: 50px auto;
-  background: rgba(0,0,0,0.5);
-  padding: 30px;
-  border-radius: 15px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
 }
 
-input, button {
-  padding: 10px;
-  margin: 5px;
-  border-radius: 5px;
-  border: none;
+.search {
+    margin-bottom: 20px;
 }
 
-.forecast-container {
-  display: flex;
-  overflow-x: auto;
-  margin-top: 10px;
-  padding-bottom: 10px;
+input {
+    padding: 10px;
+    font-size: 16px;
+    width: 200px;
 }
 
-.forecast-card {
-  background: rgba(255, 255, 255, 0.3);
-  border-radius: 10px;
-  padding: 10px;
-  margin: 5px;
-  min-width: 100px;
-  flex-shrink: 0;
-  backdrop-filter: blur(5px);
-  color: #000;
-  text-align: center;
+button {
+    padding: 10px;
+    font-size: 16px;
+    margin-left: 10px;
+    cursor: pointer;
 }
 
-.forecast-card img {
-  width: 50px;
-  height: 50px;
-  animation: float 3s ease-in-out infinite;
+.forecast-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 10px;
+    margin-bottom: 20px;
 }
 
-@keyframes float {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-5px); }
-  100% { transform: translateY(0px); }
+.forecast-item {
+    background: rgba(255, 255, 255, 0.8);
+    padding: 10px;
+    border-radius: 10px;
 }
 
-/* Weather-based backgrounds */
-body.clear { background: linear-gradient(to bottom, #56CCF2, #2F80ED); }
-body.clouds { background: linear-gradient(to bottom, #bdc3c7, #2c3e50); }
-body.rain { background: linear-gradient(to bottom, #4e54c8, #8f94fb); }
-body.snow { background: linear-gradient(to bottom, #83a4d4, #b6fbff); }
+canvas {
+    background: white;
+    border-radius: 10px;
+    padding: 10px;
+}
