@@ -5,6 +5,7 @@ document.getElementById("search-btn").addEventListener("click", () => {
   }
 });
 
+
 async function getWeather(city) {
   try {
     const res = await fetch(`https://tiny-sun-d9ff.axvampire.workers.dev/?city=${city}`);
