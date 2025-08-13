@@ -1,6 +1,5 @@
-name = "WeatherApp"        # name of your worker
-main = "index.js"             # entry point file
+name = "WeatherApp"
+main = "index.js"
 compatibility_date = "2025-08-13"
-
-account_id = "axvampire" # find in Cloudflare dashboard → Overview
-workers_dev = true             # enables temporary *.workers.dev domain
+account_id = "axvampire"
+workers_dev = true
