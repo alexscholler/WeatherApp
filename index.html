@@ -1,45 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Weather App</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-  <div class="app">
-    <header>
-      <h1>Weather Now</h1>
-      <div class="search">
-        <input type="text" id="city-input" placeholder="Search city...">
-        <button id="search-btn">🔍</button>
-      </div>
-    </header>
+<div class="container">
+  <h1>Weather App</h1>
+  <input type="text" id="cityInput" placeholder="Enter city name">
+  <button onclick="getWeather()">Get Weather</button>
 
-    <main>
-      <section class="weather-card">
-        <div class="main-info">
-          <img id="weather-icon" src="" alt="Weather icon">
-          <div>
-            <h2 id="city-name">City Name</h2>
-            <p id="temperature">--°C</p>
-          </div>
-        </div>
-        <div class="details">
-          <p>💧 Humidity: <span id="humidity">--%</span></p>
-          <p>🌬 Wind: <span id="wind">-- km/h</span></p>
-          <p>🌅 Sunrise: <span id="sunrise">--</span></p>
-          <p>🌇 Sunset: <span id="sunset">--</span></p>
-        </div>
-      </section>
+  <h2 id="cityName"></h2>
+  <p id="temp"></p>
+  <p id="description"></p>
 
-      <section class="forecast">
-        <!-- Forecast cards appear here -->
-      </section>
-    </main>
-  </div>
-  <script src="config.js"></script>
-  <script src="script.js"></script>
+  <h3>Hourly Forecast</h3>
+  <div id="hourlyForecast" class="forecast-container"></div>
+
+  <h3>Daily Forecast</h3>
+  <div id="dailyForecast" class="forecast-container"></div>
+
+  <h3>Cloud Coverage Next 24 Hours</h3>
+  <canvas id="cloudChart" height="150"></canvas>
+
+  <h3>Chance of Rain Next 24 Hours</h3>
+  <canvas id="rainChart" height="150"></canvas>
+</div>
+
+<script src="config.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
+
