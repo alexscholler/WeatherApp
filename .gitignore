@@ -1,0 +1,14 @@
+# Ignore API key file
+config.js
+
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# Ignore IDE/project files
+.idea/
+.vscode/
+
+# Ignore node modules if used
+node_modules/
+
