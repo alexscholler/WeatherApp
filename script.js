@@ -7,7 +7,7 @@ document.getElementById("search-btn").addEventListener("click", () => {
 
 async function getWeather(city) {
   try {
-    const res = await fetch(`YOUR_WORKER_URL?city=${city}`);
+    const res = await fetch(`https://tiny-sun-d9ff.axvampire.workers.dev/?city=${city}`);
     const data = await res.json();
     
     document.getElementById("city-name").textContent = data.name;
