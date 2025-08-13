@@ -3,14 +3,14 @@ async function getWeather() {
     if (!city) return alert("Please enter a city");
 
     // Geocoding API to get coordinates
-    const geoRes = await fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${API_KEY}`);
+    const geoRes = await fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${bc29083ff91f6497ad4eb7297cdf1d78}`);
     const geoData = await geoRes.json();
     if (!geoData[0]) return alert("City not found");
 
     const {lat, lon, name} = geoData[0];
 
     // One Call API for weather
-    const res = await fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=metric&exclude=minutely,alerts&appid=${API_KEY}`);
+    const res = await fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=metric&exclude=minutely,alerts&appid=${bc29083ff91f6497ad4eb7297cdf1d78}`);
     const data = await res.json();
 
     // Current weather
