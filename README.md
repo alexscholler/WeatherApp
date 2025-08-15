@@ -30,5 +30,5 @@ The app runs entirely in the browser, works on GitHub Pages, and requires no bac
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/YOUR_USERNAME/weather-app.git
+   git clone https://github.com/alexscholler/WeatherApp.git
    cd weather-app
