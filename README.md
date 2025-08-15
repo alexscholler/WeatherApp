@@ -1,27 +1,34 @@
-# Weather App
-A modern, responsive weather app built with HTML, CSS, and JavaScript.
+# 🌦 Weather App
 
-## Features:
+A simple, responsive weather application that uses the **free tier** of the [OpenWeather API](https://openweathermap.org/api) to display:
 
-- Current weather for any city
+- **Current weather** for any city
+- **Next 24 hours** (3-hour intervals)
+- **Next 5 days** forecast
+- **Cloud coverage** and **rain probability** charts
 
-- 24-hour hourly forecast
+The app runs entirely in the browser, works on GitHub Pages, and requires no backend.
 
-- Daily forecast for the week
+---
 
-- Animated weather icons and floating effects
+## 🚀 Features
+- **Current Weather**: Temperature, description, wind, and cloud cover.
+- **Hourly Forecast**: Next 8 intervals (24 hours) from the 3-hour forecast API.
+- **Daily Forecast**: Groups the 3-hour forecast into daily summaries (min/max temp).
+- **Weather Charts**: Displays cloud coverage and rain probability over the next 24 hours using Chart.js.
+- **Responsive Design**: Works on desktop and mobile.
+- **Free API Support**: Only uses endpoints available in the free plan (`/weather` and `/forecast`).
 
-- Dynamic background changes based on weather
+---
 
-- Charts showing cloud coverage and rain probability
+## 📷 Screenshot
+![Weather App Screenshot](screenshot.png)
 
-## Usage:
+---
 
-- Add your OpenWeatherMap API key in config.js.
+## 🛠 How to Run Locally
 
-- Open index.html in a browser or host via GitHub Pages.
-
-- Enter a city name to view the weather forecast.
-
-### Live Demo:
-https://alexscholler.github.io/weatherapp
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/YOUR_USERNAME/weather-app.git
+   cd weather-app

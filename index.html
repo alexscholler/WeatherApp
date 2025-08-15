@@ -1,40 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Weather App</title>
-  <link rel="stylesheet" href="style.css">
-
-  <!-- Chart.js for graphs -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="container">
-  <h1>Weather App</h1>
-  <div class="search">
-    <input type="text" id="cityInput" placeholder="Enter city">
-    <button id="getWeatherBtn">Get Weather</button>
-  </div>
+    <div class="app-container">
+        <h1>Weather App</h1>
+        <div class="search-container">
+            <input type="text" id="city-input" placeholder="Enter city">
+            <button id="get-weather-btn">Get Weather</button>
+        </div>
 
-  <div id="currentWeather"></div>
+        <div id="current-weather"></div>
 
-  <h2>Hourly Forecast (Next 24 Hours)</h2>
-  <div id="hourlyForecast" class="forecast-grid"></div>
+        <h2>Next 24 Hours</h2>
+        <div id="hourly-forecast" class="forecast-grid"></div>
 
-  <h2>7-Day Forecast</h2>
-  <div id="dailyForecast" class="forecast-grid"></div>
+        <h2>Next 5 Days</h2>
+        <div id="daily-forecast" class="forecast-grid"></div>
 
-  <h3>Cloud Coverage Next 24 Hours</h3>
-  <canvas id="cloudChart" height="150"></canvas>
+        <canvas id="weather-chart" width="400" height="200"></canvas>
+    </div>
 
-  <h3>Chance of Rain Next 24 Hours</h3>
-  <canvas id="rainChart" height="150"></canvas>
-</div>
-
-<!-- Load API key first -->
-<script src="config.js"></script>
-<!-- App logic -->
-<script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="config.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
