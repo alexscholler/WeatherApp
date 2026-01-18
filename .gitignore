@@ -12,3 +12,4 @@ Thumbs.db
 # Ignore node modules if used
 node_modules/
 
+.vercel

@@ -1,3 +1,23 @@
+// API Keys - embedded for Vercel deployment
+const API_KEY = 'bc29083ff91f6497ad4eb7297cdf1d78';
+const UNSPLASH_ACCESS_KEY = '-WgqT7svHqWlWDWJzGtf8eTvhHr9yKsx0SN_RPgHZ1w';
+
+// Initialize button on page load
+window.addEventListener('DOMContentLoaded', () => {
+    const btn = document.getElementById('btn-text');
+    if (btn) {
+        btn.textContent = 'Search';
+    }
+    const input = document.getElementById('city-input');
+    if (input) {
+        input.disabled = false;
+    }
+    const button = document.getElementById('get-weather-btn');
+    if (button) {
+        button.disabled = false;
+    }
+});
+
 const cityInput = document.getElementById("city-input");
 const autocompleteDropdown = document.getElementById("autocomplete-dropdown");
 let debounceTimer;
