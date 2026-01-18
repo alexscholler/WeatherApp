@@ -5,24 +5,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather App</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <div class="background-animation"></div>
+    
     <div class="app-container">
-        <h1>Weather App</h1>
-        <div class="search-container">
-            <input type="text" id="city-input" placeholder="Enter city">
-            <button id="get-weather-btn">Get Weather</button>
+        <div class="header">
+            <h1 class="app-title">
+                <svg class="title-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M13 2L3 14h8l-1 8 10-12h-8l1-8z"/>
+                </svg>
+                Weather Forecast
+            </h1>
         </div>
 
-        <div id="current-weather"></div>
+        <div class="search-card">
+            <div class="search-container">
+                <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 10c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9 9 4.03 9 9z"/>
+                    <path d="M12 6v4l3 2"/>
+                </svg>
+                <div class="input-wrapper">
+                    <input type="text" id="city-input" placeholder="Search for a city..." autocomplete="off">
+                    <div id="autocomplete-dropdown" class="autocomplete-dropdown"></div>
+                </div>
+                <button id="get-weather-btn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"/>
+                        <path d="m21 21-4.35-4.35"/>
+                    </svg>
+                    Search
+                </button>
+            </div>
+        </div>
 
-        <h2>Next 24 Hours</h2>
-        <div id="hourly-forecast" class="forecast-grid"></div>
+        <div id="current-weather" class="hidden"></div>
 
-        <h2>Next 5 Days</h2>
-        <div id="daily-forecast" class="forecast-grid"></div>
+        <div class="forecast-section hidden">
+            <h2 class="section-title">Hourly Forecast</h2>
+            <div id="hourly-forecast" class="forecast-grid hourly-grid"></div>
+        </div>
 
-        <canvas id="weather-chart" width="400" height="200"></canvas>
+        <div class="forecast-section hidden">
+            <h2 class="section-title">5-Day Forecast</h2>
+            <div id="daily-forecast" class="forecast-grid daily-grid"></div>
+        </div>
+
+        <div class="chart-section hidden">
+            <h2 class="section-title">Weather Charts</h2>
+            <div class="chart-container">
+                <canvas id="weather-chart"></canvas>
+            </div>
+        </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>

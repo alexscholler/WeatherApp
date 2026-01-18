@@ -1,46 +1,554 @@
-body {
-    font-family: Arial, sans-serif;
-    background: linear-gradient(to bottom, #4facfe, #00f2fe);
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
     color: white;
-    text-align: center;
+    position: relative;
+    overflow-x: hidden;
+}
+
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0;
+    transition: opacity 1s ease;
+    z-index: -1;
+}
+
+body.has-city-bg::after {
+    opacity: 0.3;
+}
+
+.background-animation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 20% 50%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(138, 43, 226, 0.2) 0%, transparent 50%),
+        radial-gradient(circle at 40% 80%, rgba(0, 242, 254, 0.2) 0%, transparent 50%);
+    animation: float 20s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 0;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px) scale(1); }
+    50% { transform: translateY(-20px) scale(1.05); }
 }
 
 .app-container {
-    max-width: 900px;
-    margin: auto;
-    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 30px 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 40px;
+    animation: fadeInDown 0.8s ease-out;
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.app-title {
+    font-size: 3rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    letter-spacing: -1px;
+}
+
+.title-icon {
+    width: 50px;
+    height: 50px;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+.search-card {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(20px);
+    border-radius: 25px;
+    padding: 30px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    margin-bottom: 40px;
+    animation: fadeInUp 0.8s ease-out 0.2s both;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .search-container {
-    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    position: relative;
+}
+
+.input-wrapper {
+    flex: 1;
+    position: relative;
+}
+
+.search-icon {
+    width: 24px;
+    height: 24px;
+    color: rgba(255, 255, 255, 0.7);
 }
 
 input {
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
+    width: 100%;
+    padding: 15px 20px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+input:focus {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.4);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
 
 button {
-    padding: 10px 15px;
+    padding: 15px 30px;
     border: none;
-    background-color: #ff9800;
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
     color: white;
+    font-weight: 600;
     cursor: pointer;
-    border-radius: 5px;
+    border-radius: 15px;
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 4px 15px rgba(245, 87, 108, 0.4);
+}
+
+button svg {
+    width: 20px;
+    height: 20px;
+}
+
+button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 25px rgba(245, 87, 108, 0.6);
+}
+
+button:active {
+    transform: translateY(-1px);
+}
+
+#current-weather {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(20px);
+    border-radius: 25px;
+    padding: 40px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    margin-bottom: 40px;
+    animation: fadeInUp 0.8s ease-out 0.4s both;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.5s ease;
+}
+
+/* Weather-specific backgrounds */
+#current-weather.weather-clear {
+    background: 
+        radial-gradient(circle at 30% 20%, #FFD700 0%, #FFA500 15%, transparent 30%),
+        radial-gradient(circle at 30% 20%, rgba(255, 215, 0, 0.3) 0%, transparent 50%),
+        linear-gradient(180deg, #87CEEB 0%, #FDB99B 100%);
+}
+
+#current-weather.weather-clouds {
+    background: 
+        radial-gradient(ellipse 80px 50px at 20% 30%, #E8E8E8 0%, transparent 50%),
+        radial-gradient(ellipse 100px 60px at 15% 35%, #D3D3D3 0%, transparent 50%),
+        radial-gradient(ellipse 90px 55px at 25% 32%, #F0F0F0 0%, transparent 50%),
+        radial-gradient(ellipse 100px 60px at 70% 40%, #E8E8E8 0%, transparent 50%),
+        radial-gradient(ellipse 120px 70px at 65% 45%, #D3D3D3 0%, transparent 50%),
+        radial-gradient(ellipse 95px 58px at 75% 42%, #F0F0F0 0%, transparent 50%),
+        linear-gradient(180deg, #B0C4DE 0%, #778899 100%);
+}
+
+#current-weather.weather-rain,
+#current-weather.weather-drizzle {
+    background: 
+        radial-gradient(ellipse 90px 55px at 25% 20%, #6B7B8C 0%, transparent 50%),
+        radial-gradient(ellipse 110px 65px at 20% 25%, #556270 0%, transparent 50%),
+        radial-gradient(ellipse 95px 58px at 30% 22%, #7B8C9E 0%, transparent 50%),
+        radial-gradient(ellipse 100px 60px at 70% 30%, #6B7B8C 0%, transparent 50%),
+        radial-gradient(ellipse 115px 68px at 68% 32%, #556270 0%, transparent 50%),
+        repeating-linear-gradient(
+            85deg,
+            transparent,
+            transparent 8px,
+            rgba(173, 216, 230, 0.3) 8px,
+            rgba(173, 216, 230, 0.3) 10px
+        ),
+        linear-gradient(180deg, #4B79A1 0%, #283E51 100%);
+}
+
+#current-weather.weather-thunderstorm {
+    background: 
+        radial-gradient(ellipse 100px 60px at 30% 25%, #2C3E50 0%, transparent 50%),
+        radial-gradient(ellipse 120px 70px at 25% 28%, #1a252f 0%, transparent 50%),
+        radial-gradient(ellipse 95px 58px at 35% 26%, #34495E 0%, transparent 50%),
+        radial-gradient(ellipse 110px 65px at 70% 30%, #2C3E50 0%, transparent 50%),
+        radial-gradient(ellipse 125px 72px at 68% 32%, #1a252f 0%, transparent 50%),
+        linear-gradient(135deg, 
+            transparent 40%, 
+            #FFD700 40%, #FFD700 42%, 
+            transparent 42%, transparent 45%,
+            #FFD700 45%, #FFD700 48%,
+            transparent 48%
+        ),
+        linear-gradient(180deg, #2C3E50 0%, #1a1a2e 100%);
+}
+
+#current-weather.weather-snow {
+    background: 
+        radial-gradient(circle 3px at 15% 25%, white 0%, transparent 100%),
+        radial-gradient(circle 4px at 35% 35%, white 0%, transparent 100%),
+        radial-gradient(circle 3px at 55% 28%, white 0%, transparent 100%),
+        radial-gradient(circle 5px at 75% 38%, white 0%, transparent 100%),
+        radial-gradient(circle 3px at 85% 30%, white 0%, transparent 100%),
+        radial-gradient(circle 4px at 25% 50%, white 0%, transparent 100%),
+        radial-gradient(circle 3px at 45% 55%, white 0%, transparent 100%),
+        radial-gradient(circle 4px at 65% 48%, white 0%, transparent 100%),
+        radial-gradient(circle 3px at 88% 52%, white 0%, transparent 100%),
+        radial-gradient(circle 5px at 10% 60%, white 0%, transparent 100%),
+        radial-gradient(ellipse 95px 58px at 30% 18%, #F5F5F5 0%, transparent 50%),
+        radial-gradient(ellipse 110px 65px at 25% 22%, #E8E8E8 0%, transparent 50%),
+        radial-gradient(ellipse 90px 55px at 35% 20%, #FFFFFF 0%, transparent 50%),
+        linear-gradient(180deg, #E6DADA 0%, #C4D3E0 100%);
+}
+
+#current-weather.weather-mist,
+#current-weather.weather-fog,
+#current-weather.weather-haze {
+    background: 
+        repeating-linear-gradient(
+            0deg,
+            rgba(255, 255, 255, 0.1) 0px,
+            rgba(255, 255, 255, 0.3) 10px,
+            rgba(255, 255, 255, 0.1) 20px,
+            rgba(200, 200, 200, 0.2) 30px,
+            rgba(255, 255, 255, 0.1) 40px
+        ),
+        repeating-linear-gradient(
+            90deg,
+            transparent 0px,
+            rgba(255, 255, 255, 0.15) 50px,
+            transparent 100px
+        ),
+        linear-gradient(180deg, #D3D3D3 0%, #A9A9A9 100%);
+}
+
+/* Weather animations */
+#current-weather::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+}
+
+#current-weather.weather-rain::before {
+    background: repeating-linear-gradient(
+        transparent,
+        transparent 2px,
+        rgba(255, 255, 255, 0.1) 2px,
+        rgba(255, 255, 255, 0.1) 4px
+    );
+    animation: rain 0.3s linear infinite;
+    opacity: 0.3;
+}
+
+@keyframes rain {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(0); }
+}
+
+#current-weather.weather-snow::before {
+    background-image: 
+        radial-gradient(2px 2px at 20% 30%, white, transparent),
+        radial-gradient(2px 2px at 60% 70%, white, transparent),
+        radial-gradient(1px 1px at 50% 50%, white, transparent),
+        radial-gradient(1px 1px at 80% 10%, white, transparent),
+        radial-gradient(2px 2px at 90% 60%, white, transparent);
+    background-size: 200px 200px;
+    animation: snow 3s linear infinite;
+    opacity: 0.6;
+}
+
+@keyframes snow {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(100%); }
+}
+
+#current-weather h2 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+#current-weather p {
+    font-size: 1.2rem;
+    margin: 10px 0;
+    opacity: 0.9;
+}
+
+#current-weather p:first-of-type {
+    font-size: 1.4rem;
+    text-transform: capitalize;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+.forecast-section {
+    margin-bottom: 40px;
+    animation: fadeInUp 0.8s ease-out 0.6s both;
+}
+
+.section-title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
 .forecast-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-    gap: 10px;
-    margin-top: 10px;
+    gap: 20px;
+}
+
+.hourly-grid {
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+}
+
+.daily-grid {
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
 }
 
 .forecast-item {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(20px);
+    padding: 20px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.forecast-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
     background: rgba(255, 255, 255, 0.2);
-    padding: 10px;
+}
+
+.forecast-item p {
+    margin: 8px 0;
+    font-size: 0.95rem;
+}
+
+.forecast-item p:first-child {
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+}
+
+.forecast-item p:nth-child(2) {
+    text-transform: capitalize;
+    opacity: 0.9;
+}
+
+.forecast-item p:last-child {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+.chart-section {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(20px);
+    border-radius: 25px;
+    padding: 30px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    animation: fadeInUp 0.8s ease-out 0.8s both;
+}
+
+.chart-container {
+    margin-top: 20px;
+    position: relative;
+    height: 300px;
+    width: 100%;
+}
+
+#weather-chart {
+    max-width: 100%;
+    height: 100% !important;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .app-title {
+        font-size: 2rem;
+    }
+    
+    .title-icon {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .search-container {
+        flex-direction: column;
+    }
+    
+    button {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .hourly-grid,
+    .daily-grid {
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    }
+    
+    #current-weather h2 {
+        font-size: 2rem;
+    }
+}
+
+/* Hidden class */
+.hidden {
+    display: none !important;
+}
+
+/* Autocomplete Dropdown */
+.autocomplete-dropdown {
+    position: absolute;
+    top: calc(100% + 5px);
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-radius: 15px;
+    max-height: 300px;
+    overflow-y: auto;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    display: none;
+}
+
+.autocomplete-dropdown.show {
+    display: block;
+}
+
+.autocomplete-item {
+    padding: 12px 20px;
+    color: #333;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.autocomplete-item:last-child {
+    border-bottom: none;
+}
+
+.autocomplete-item:hover {
+    background: rgba(102, 126, 234, 0.2);
+}
+
+.autocomplete-item strong {
+    color: #667eea;
+}
+
+.autocomplete-loading {
+    padding: 12px 20px;
+    color: #666;
+    text-align: center;
+}
+
+.autocomplete-dropdown::-webkit-scrollbar {
+    width: 8px;
+}
+
+.autocomplete-dropdown::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
     border-radius: 10px;
+}
+
+.autocomplete-dropdown::-webkit-scrollbar-thumb {
+    background: rgba(102, 126, 234, 0.5);
+    border-radius: 10px;
+}
+
+.autocomplete-dropdown::-webkit-scrollbar-thumb:hover {
+    background: rgba(102, 126, 234, 0.7);
 }
